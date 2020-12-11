@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Simple Multer Upload Example</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="button.css" />
+    <style>
+      body {
+        margin: 0;
+      }
+
+      div.form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #666;
+      }
+
+      input {
+        display: none;
+      }
+
+      .button {
+        padding: 50px;
+        margin: 25px;
+      }
+
+      .button * {
+        font-size: x-large;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form">
+      <form action="/convert" enctype="multipart/form-data" method="post">
+        <label class="button">
+          <input id="file-selector" type="file" name="file" />
+          <span id="file-info">Convert Collada File</span>
+        </label>
+        <!--
+        <label class="button">
+          <input type="submit" value="Upload" />
+          <span>Submit</span>
+        </label>
+        -->
+        <a href="preview">
+          <label class="button">
+            <span>Output Folder</span>
+          </label>
+        </a>
+      </form>
+    </div>
+    <script>
+      document.querySelector("#file-selector").onchange = function (evt) {
+        /*
+        var filename = this.value.split(/(\\|\/)/g).pop();
+        document.querySelector("#file-info").innerHTML = filename;
+        */
+        this.form.submit();
+      };
+    </script>
+  </body>
+</html>

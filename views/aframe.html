@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GLTF</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-gltf-helpers@0.0.2/dist/aframe-gltf-helpers.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
+    <link rel="stylesheet" href="/button.css" />
+    <style>
+      .button {
+        position: absolute;
+        right: 100px;
+        bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene background="color:#333">
+      <a-assets>
+        <a-asset-item id="gltf-model" src="{{{ gltf }}}"> </a-asset-item>
+        <img id="grid-img" src="/img/grid-white-64.png" />
+        <a-mixin
+          id="grid"
+          geometry="primitive: plane; width: 256; height: 256;"
+          position="0 -0.01 0"
+          rotation="-90 0 0"
+          material="src: #grid-img; repeat: 512 512; transparent: true; opacity:0.3; side:double"
+        ></a-mixin>
+      </a-assets>
+      <a-entity
+        camera
+        look-controls
+        orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 100; initialPosition: 1 1.6 1; maxPolarAngle: 180"
+      ></a-entity>
+      <a-entity mixin="grid"></a-entity>
+      <a-entity gltf-model="#gltf-model"></a-entity>
+    </a-scene>
+    <div class="button">
+      <a href="{{{ gltf }}}">DOWNLOAD</a>
+    </div>
+  </body>
+</html>
